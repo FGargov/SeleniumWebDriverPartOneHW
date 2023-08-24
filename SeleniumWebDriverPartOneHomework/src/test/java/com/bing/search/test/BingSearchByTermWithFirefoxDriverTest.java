@@ -11,7 +11,7 @@ import java.time.Duration;
 public class BingSearchByTermWithFirefoxDriverTest {
     private static WebDriver driver;
     String searchTerm = "Telerik Academy Alpha";
-    String expectedResult = "IT Career Start in 6 Months - Telerik Academy Alpha";
+    String expectedResult = "Telerik Academy Alpha - IT Career Start in 6 Months";
     String actualResult = "";
 
     @BeforeAll
