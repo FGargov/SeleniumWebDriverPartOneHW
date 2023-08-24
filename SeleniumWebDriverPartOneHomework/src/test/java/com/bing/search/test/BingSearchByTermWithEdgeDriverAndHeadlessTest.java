@@ -1,4 +1,4 @@
-package com.google.search.test;
+package com.bing.search.test;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -6,16 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-
-public class GoogleSearchByTermWithHeadlessTest {
+public class BingSearchByTermWithEdgeDriverAndHeadlessTest {
     private static WebDriver driver;
-    private static WebDriverWait wait;
     String searchTerm = "Telerik Academy Alpha";
-    String expectedResult = "IT Career Start in 6 Months - Telerik Academy Alpha";
+    String expectedResult = "Telerik Academy Alpha - IT Career Start in 6 Months";
     String actualResult = "";
 
     @BeforeAll
@@ -24,12 +20,12 @@ public class GoogleSearchByTermWithHeadlessTest {
         options.addArguments("--headless");
         driver = new EdgeDriver(options);
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
-        driver.get("https://google.com");
+        driver.get("https://bing.com");
 
         //Agree to consent
-        WebElement acceptButton = driver.findElement(By.xpath("//button[@id='L2AGLb']"));
+        WebElement acceptButton = driver.findElement(By.xpath("//*/button[@id='bnp_btn_accept']"));
         acceptButton.click();
     }
 
@@ -40,23 +36,21 @@ public class GoogleSearchByTermWithHeadlessTest {
 
     @BeforeEach
     public  void testSetup() {
-        driver.get("https://google.com");
+        driver.get("https://bing.com");
     }
 
     @Test
-    public void resultFound_when_searchTermProvided_telerikAcademy() {
-
+    public  void resultFound_when_searchTerm_telerikAcademy() {
         //Type text in search field
-        WebElement searchField = driver.findElement(By.xpath("//textarea[@type='search']"));
+        WebElement searchField = driver.findElement(By.xpath("//form/input[@type='search'][@class='sb_form_q']"));
         searchField.sendKeys(searchTerm);
 
         //Click search button
-        WebElement searchButton = driver.findElement(By.xpath("(//input[@type='submit' and @name='btnK'])[2]"));
-        wait.until(ExpectedConditions.visibilityOf(searchButton));
+        WebElement searchButton = driver.findElement(By.xpath("//*[@id='search_icon']"));
         searchButton.click();
 
         //Assert result found
-        WebElement firstResult = driver.findElement(By.xpath("//a/h3[1]"));
+        WebElement firstResult = driver.findElement(By.xpath("//div[@class='b_title']/h2[@class=' b_topTitle']/a"));
         actualResult = firstResult.getText();
         Assertions.assertEquals(expectedResult, actualResult, "Search result not found.");
     }

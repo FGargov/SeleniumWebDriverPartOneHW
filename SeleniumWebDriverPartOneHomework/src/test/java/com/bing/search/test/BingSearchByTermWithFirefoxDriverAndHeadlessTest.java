@@ -8,19 +8,20 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
-public class BingSearchByTermWithHeadlessTest {
+
+public class BingSearchByTermWithFirefoxDriverAndHeadlessTest {
     private static WebDriver driver;
 
     String expectedResult = "IT Career Start in 6 Months - Telerik Academy Alpha";
     String actualResult = "";
+
     @BeforeAll
     public static void classSetup() {
-        EdgeOptions options = new EdgeOptions();
+        FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
-        driver = new EdgeDriver(options);
+        driver = new FirefoxDriver(options);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
