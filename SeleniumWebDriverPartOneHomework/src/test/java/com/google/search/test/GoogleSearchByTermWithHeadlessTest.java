@@ -14,6 +14,9 @@ import java.time.Duration;
 public class GoogleSearchByTermWithHeadlessTest {
     private static WebDriver driver;
     private static WebDriverWait wait;
+    String searchTerm = "Telerik Academy Alpha";
+    String expectedResult = "IT Career Start in 6 Months - Telerik Academy Alpha";
+    String actualResult = "";
 
     @BeforeAll
     public static void classSetup() {
@@ -42,7 +45,7 @@ public class GoogleSearchByTermWithHeadlessTest {
 
     @Test
     public void resultFound_when_searchTermProvided_telerikAcademy() {
-        String searchTerm = "Telerik Academy Alpha";
+
         //Type text in search field
         WebElement searchField = driver.findElement(By.xpath("//textarea[@type='search']"));
         searchField.sendKeys(searchTerm);
@@ -54,6 +57,7 @@ public class GoogleSearchByTermWithHeadlessTest {
 
         //Assert result found
         WebElement firstResult = driver.findElement(By.xpath("//a/h3[1]"));
-        Assertions.assertTrue(firstResult.getText().contains(searchTerm), "Search result not found.");
+        actualResult = firstResult.getText();
+        Assertions.assertEquals(expectedResult, actualResult, "Search result not found.");
     }
 }

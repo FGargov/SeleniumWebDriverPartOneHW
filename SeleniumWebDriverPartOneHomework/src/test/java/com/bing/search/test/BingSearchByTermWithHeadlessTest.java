@@ -14,6 +14,8 @@ import java.time.Duration;
 public class BingSearchByTermWithHeadlessTest {
     private static WebDriver driver;
 
+    String expectedResult = "IT Career Start in 6 Months - Telerik Academy Alpha";
+    String actualResult = "";
     @BeforeAll
     public static void classSetup() {
         EdgeOptions options = new EdgeOptions();
@@ -52,7 +54,8 @@ public class BingSearchByTermWithHeadlessTest {
         searchButton.click();
 
         //Assert result found
-        WebElement firstResult = driver.findElement(By.xpath("//*/ol[@id='b_results']/li[2]/div[@class='b_algo_group']/div[@class='tpcn']/a[@class='tilk']"));
-        Assertions.assertEquals("IT Career Start in 6 Months - Telerik Academy Alpha", firstResult.getText(), "Search result not found.");
+        WebElement firstResult = driver.findElement(By.xpath("//div[@class='b_title']/h2[@class=' b_topTitle']/a"));
+        actualResult = firstResult.getText();
+        Assertions.assertEquals(expectedResult, actualResult, "Search result not found.");
     }
 }

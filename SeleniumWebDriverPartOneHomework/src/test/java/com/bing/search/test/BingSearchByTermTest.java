@@ -13,6 +13,9 @@ import java.time.Duration;
 
 public class BingSearchByTermTest {
     private static WebDriver driver;
+    String searchTerm = "Telerik Academy Alpha";
+    String expectedResult = "IT Career Start in 6 Months - Telerik Academy Alpha";
+    String actualResult = "";
 
     @BeforeAll
     public static void classSetup() {
@@ -39,8 +42,6 @@ public class BingSearchByTermTest {
 
     @Test
     public  void resultFound_when_searchTerm_telerikAcademy() {
-        String searchTerm = "Telerik Academy Alpha";
-
         //Type text in search field
         WebElement searchField = driver.findElement(By.xpath("//form/input[@type='search'][@class='sb_form_q']"));
         searchField.sendKeys(searchTerm);
@@ -51,6 +52,7 @@ public class BingSearchByTermTest {
 
         //Assert result found
         WebElement firstResult = driver.findElement(By.xpath("//div[@class='b_title']/h2/a"));
-        Assertions.assertEquals("IT Career Start in 6 Months - Telerik Academy Alpha", firstResult.getText(), "Search result not found.");
+        actualResult = firstResult.getText();
+        Assertions.assertEquals(expectedResult, actualResult, "Search result not found.");
     }
 }
