@@ -18,6 +18,7 @@ public class GoogleSearchByTermTest {
 
         driver.get("https://google.com");
 
+        //Agree to consent
         WebElement acceptButton = driver.findElement(By.xpath("//button[@id='L2AGLb']"));
         acceptButton.click();
     }

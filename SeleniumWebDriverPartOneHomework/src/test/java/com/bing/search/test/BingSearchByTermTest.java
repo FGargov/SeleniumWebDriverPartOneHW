@@ -22,6 +22,7 @@ public class BingSearchByTermTest {
 
         driver.get("https://bing.com");
 
+        //Agree to consent
         WebElement acceptButton = driver.findElement(By.xpath("//*/button[@id='bnp_btn_accept']"));
         acceptButton.click();
     }
