@@ -6,11 +6,13 @@
       <list>
         <option value="$PROJECT_DIR$/../Alpha50QANew/HomeWorks/Alpha50WebServicesRESTAssured/Selenium Web Driver Part I/SeleniumWebDriverPartOne/pom.xml" />
         <option value="$PROJECT_DIR$/Proba/pom.xml" />
+        <option value="$PROJECT_DIR$/SeleniumWebDriverPartOneHomework/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/../Alpha50QANew/HomeWorks/Alpha50WebServicesRESTAssured/Selenium Web Driver Part I/SeleniumWebDriverPartOne/pom.xml" />
+        <option value="$PROJECT_DIR$/Proba/pom.xml" />
       </set>
     </option>
   </component>
