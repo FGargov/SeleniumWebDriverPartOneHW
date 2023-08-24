@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Main Suite">
+    <test name="Selenium Web Driver Part One">
+        <classes>
+            <class name="com.bing.search.test.BingSearchByTermWithEdgeDriverTest"/>
+            <class name="com.bing.search.test.BingSearchByTermWithEdgeDriverAndHeadlessTest"/>
+            <class name="com.bing.search.test.BingSearchByTermWithFirefoxDriverTest"/>
+            <class name="com.bing.search.test.BingSearchByTermWithFirefoxDriverAndHeadlessTest"/>
+            <class name="com.google.search.test.GoogleSearchByTermWithEdgeDriverTest"/>
+            <class name="com.google.search.test.GoogleSearchByTermWithEdgeDriverAndHeadlessTest"/>
+            <class name="com.google.search.test.GoogleSearchByTermWithFirefoxDriverTest"/>
+            <class name="com.google.search.test.GoogleSearchByTermWithFirefoxDriverAndHeadlessTest"/>
+        </classes>
+    </test>
+</suite>
