@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,7 +16,9 @@ public class BingSearchByTermWithHeadlessTest {
 
     @BeforeAll
     public static void classSetup() {
-        driver = new EdgeDriver();
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("--headless");
+        driver = new EdgeDriver(options);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
@@ -49,7 +52,7 @@ public class BingSearchByTermWithHeadlessTest {
         searchButton.click();
 
         //Assert result found
-        WebElement firstResult = driver.findElement(By.xpath("//div[@class='b_title']/h2/a"));
+        WebElement firstResult = driver.findElement(By.xpath("//*/ol[@id='b_results']/li[2]/div[@class='b_algo_group']/div[@class='tpcn']/a[@class='tilk']"));
         Assertions.assertEquals("IT Career Start in 6 Months - Telerik Academy Alpha", firstResult.getText(), "Search result not found.");
     }
 }
